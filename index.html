@@ -7,12 +7,12 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght=400;600;700;800&display=swap');
         body {
             font-family: 'Pretendard', sans-serif;
         }
         #donut-body, #donut-hole, #donut-inner-line {
-            transition: rx 0.3s ease-out, ry 0.3s ease-out;
+            transition: rx 0.3s ease-out, ry 0.3s ease-out, fill 0.3s ease-out, stroke 0.3s ease-out;
         }
         @keyframes flash-animation {
             0%, 100% { opacity: 1; }
@@ -32,7 +32,7 @@
                 <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
                 <h1 class="text-lg font-extrabold tracking-tight text-slate-900 dark:text-white">DONUT GRIP WORKOUT</h1>
             </div>
-            <span class="text-xs bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-300 px-3 py-1 rounded-full font-medium">손목 강화 및 건강 루틴 v1.4</span>
+            <span class="text-xs bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-300 px-3 py-1 rounded-full font-medium">손목 강화 및 건강 루틴 v1.5</span>
         </div>
     </header>
 
@@ -164,7 +164,7 @@
                             </select>
                         </div>
                         <div>
-                            <label for="total-sets-input" class="text-xs font-bold text-slate-700 dark:text-slate-300 block mb-1">목표 세트 수 선택:</label>
+                            <label for="total-sets-input" class="text-xs font-bold text-slate-700 dark:text-slate-300 block mb-1">목표 세트 수 선택 (양손 각각):</label>
                             <select id="total-sets-input" class="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-xs font-bold rounded-lg p-2 text-emerald-600 dark:text-emerald-400 font-mono outline-none">
                                 <option value="2">2 세트 수행</option>
                                 <option value="3" selected>3 세트 수행 (표준)</option>
@@ -218,9 +218,10 @@
                 <!-- Timer Display & Flash Notice Box Inside -->
                 <div id="timer-card" class="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl py-6 px-6 space-y-3 transition-colors duration-300 relative min-h-[160px] flex flex-col justify-center items-center">
                     
-                    <!-- Progress Badges Left/Right -->
-                    <div class="absolute top-3 left-4 text-xs font-mono font-black text-slate-500">
-                        세트: <span id="set-current">1</span> / <span id="set-total">3</span>
+                    <!-- Progress Badges Left/Right Dynamic Dashboard -->
+                    <div class="absolute top-3 left-4 flex gap-4 text-xs font-mono font-black">
+                        <span id="set-left-panel" class="text-emerald-600 dark:text-emerald-400 border-b-2 border-emerald-500 pb-0.5 transition-all">왼손: <span id="set-left-current">1</span>/<span id="set-left-total">3</span></span>
+                        <span id="set-right-panel" class="text-slate-400 border-b-2 border-transparent pb-0.5 transition-all">오른손: <span id="set-right-current">0</span>/<span id="set-right-total">3</span></span>
                     </div>
                     <div class="absolute top-3 right-4 text-xs font-mono font-black text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">
                         회차: <span id="rep-current">0</span> / <span id="rep-total">10</span>
@@ -424,17 +425,17 @@
         let isRunning = false;
         let phase = 'idle'; // 'idle', 'prepare', 'squeeze', 'hold', 'release', 'rest'
         let currentRep = 0;
-        let currentSet = 1;
+        let currentPhysicalSet = 1; // Left/Right alternating sets. 1=Left S1, 2=Right S1, 3=Left S2, 4=Right S2...
         
         let inTransitionDelay = false;
         let transitionDelayLeft = 0.0;
         let flashTimeout;
 
-        const PREP_DURATION = 2.0; // Reduced from 3.0 to 2.0 as requested
+        const PREP_DURATION = 2.0; 
         const SQUEEZE_DURATION = 2.0;
         const HOLD_DURATION = 3.0;
         const RELEASE_DURATION = 3.0;
-        const TRANSITION_DELAY = 0.3; // 0.3s background buffer between transitions
+        const TRANSITION_DELAY = 0.3; 
 
         const startBtn = document.getElementById('btn-start-timer');
         const resetBtn = document.getElementById('btn-reset-timer');
@@ -443,11 +444,6 @@
         const repsPerSetInput = document.getElementById('reps-per-set-input');
         const totalSetsInput = document.getElementById('total-sets-input');
         const restTimeInput = document.getElementById('rest-time-input');
-
-        const currentSetText = document.getElementById('set-current');
-        const totalSetText = document.getElementById('set-total');
-        const currentRepText = document.getElementById('rep-current');
-        const totalRepText = document.getElementById('rep-total');
 
         const bPrepare = document.getElementById('badge-prepare');
         const bSqueeze = document.getElementById('badge-squeeze');
@@ -458,13 +454,48 @@
         const flashOverlay = document.getElementById('flash-overlay');
         const flashText = document.getElementById('flash-text');
 
-        function syncConfig() {
-            totalSetText.innerText = totalSetsInput.value;
-            totalRepText.innerText = repsPerSetInput.value;
+        // Dynamic Dual-Hand Set Tracking Dashboard
+        function updateSetDisplay() {
+            const maxSets = parseInt(totalSetsInput.value);
+            const activeHand = (currentPhysicalSet % 2 !== 0) ? 'left' : 'right';
+            const currentSetLeft = Math.floor((currentPhysicalSet - 1) / 2) + 1;
+            const currentSetRight = Math.floor(currentPhysicalSet / 2);
+
+            document.getElementById('set-left-current').innerText = Math.min(maxSets, currentSetLeft);
+            document.getElementById('set-right-current').innerText = Math.min(maxSets, currentSetRight);
+            document.getElementById('set-left-total').innerText = maxSets;
+            document.getElementById('set-right-total').innerText = maxSets;
+
+            const leftPanel = document.getElementById('set-left-panel');
+            const rightPanel = document.getElementById('set-right-panel');
+
+            // Set color and scale changes based on active hand
+            const donutBody = document.getElementById('donut-body');
+            const donutInnerLine = document.getElementById('donut-inner-line');
+
+            if (activeHand === 'left') {
+                leftPanel.className = "text-emerald-600 dark:text-emerald-400 font-extrabold border-b-2 border-emerald-500 pb-0.5 scale-105 transition-all";
+                rightPanel.className = "text-slate-400 dark:text-slate-500 font-normal border-b-2 border-transparent pb-0.5 scale-100 transition-all";
+                // Donut morphs to emerald color for Left Hand
+                donutBody.setAttribute('fill', '#10b981');
+                donutInnerLine.setAttribute('stroke', '#059669');
+            } else {
+                leftPanel.className = "text-slate-400 dark:text-slate-500 font-normal border-b-2 border-transparent pb-0.5 scale-100 transition-all";
+                rightPanel.className = "text-blue-600 dark:text-blue-400 font-extrabold border-b-2 border-blue-500 pb-0.5 scale-105 transition-all";
+                // Donut morphs to blue color for Right Hand
+                donutBody.setAttribute('fill', '#3b82f6');
+                donutInnerLine.setAttribute('stroke', '#2563eb');
+            }
         }
-        repsPerSetInput.addEventListener('change', syncConfig);
-        totalSetsInput.addEventListener('change', syncConfig);
-        syncConfig();
+
+        repsPerSetInput.addEventListener('change', () => {
+            document.getElementById('rep-total').innerText = repsPerSetInput.value;
+        });
+        totalSetsInput.addEventListener('change', updateSetDisplay);
+
+        // Initial settings trigger
+        document.getElementById('rep-total').innerText = repsPerSetInput.value;
+        updateSetDisplay();
 
         function updateBadges(activeBadge) {
             [bPrepare, bSqueeze, bHold, bRelease, bRest].forEach(b => {
@@ -481,7 +512,6 @@
             }
         }
 
-        // Activates 0.5s visual overlay + plays audio frequency cue
         function triggerPhaseTransition(directive, beepFreq, isOverlayCustom = false, customOverlayBg = '') {
             clearTimeout(flashTimeout);
             playBeepSound(beepFreq, 0.25, 'triangle');
@@ -502,7 +532,7 @@
         }
 
         function runTimerLoop() {
-            initAudioEngine(); // Unlocks Audio Context on active user gesture
+            initAudioEngine(); // Unblocks Web Audio API constraints on mobile
             
             if (isRunning) return;
             isRunning = true;
@@ -519,20 +549,24 @@
             const maxSets = parseInt(totalSetsInput.value);
             const restDuration = parseFloat(restTimeInput.value);
 
-            // Moves smoothly to the next action or increments sets
             function initiateNextTransition(targetPhase) {
                 inTransitionDelay = true;
                 transitionDelayLeft = TRANSITION_DELAY;
                 phase = targetPhase;
 
+                const activeHandName = (currentPhysicalSet % 2 !== 0) ? '왼손' : '오른손';
+                const activeHandColor = (currentPhysicalSet % 2 !== 0) ? 'text-emerald-600 dark:text-emerald-400' : 'text-blue-600 dark:text-blue-400';
+                const overlayBg = (currentPhysicalSet % 2 !== 0) ? 'bg-emerald-500' : 'bg-blue-500';
+                const beepFreq = (currentPhysicalSet % 2 !== 0) ? 587.33 : 698.46; // Alternating tones
+
                 if (phase === 'prepare') {
                     timeLeft = PREP_DURATION;
-                    statusText.innerText = `${currentRep + 1}회차 시작 준비: 파지를 정돈하세요.`;
-                    statusText.className = "text-xs font-bold text-amber-600 dark:text-amber-400 tracking-wide uppercase";
+                    statusText.innerText = `${activeHandName} ${currentRep + 1}회차 시작 준비: 파지를 정돈하세요.`;
+                    statusText.className = `text-xs font-bold ${activeHandColor} tracking-wide uppercase`;
                     updateBadges(bPrepare);
                     updateActiveCard(step1);
                     setSqueezePercent(0);
-                    triggerPhaseTransition("GET READY!", 349.23, true, 'bg-amber-500');
+                    triggerPhaseTransition(`${activeHandName} 준비!`, 349.23, true, 'bg-amber-500');
                 } 
                 else if (phase === 'squeeze') {
                     timeLeft = SQUEEZE_DURATION;
@@ -541,7 +575,7 @@
                     updateBadges(bSqueeze);
                     updateActiveCard(step2);
                     setSqueezePercent(0);
-                    triggerPhaseTransition("SQUEEZE!!", 587.33, true, 'bg-teal-500');
+                    triggerPhaseTransition("SQUEEZE!!", beepFreq, true, 'bg-teal-500');
                 } 
                 else if (phase === 'hold') {
                     timeLeft = HOLD_DURATION;
@@ -549,7 +583,7 @@
                     statusText.className = "text-xs font-bold text-emerald-600 dark:text-emerald-400 tracking-wide uppercase animate-pulse";
                     updateBadges(bHold);
                     setSqueezePercent(100);
-                    triggerPhaseTransition("HOLD!!", 880, true, 'bg-emerald-500');
+                    triggerPhaseTransition("HOLD!!", 880, true, overlayBg);
                 } 
                 else if (phase === 'release') {
                     timeLeft = RELEASE_DURATION;
@@ -562,12 +596,21 @@
                 } 
                 else if (phase === 'rest') {
                     timeLeft = restDuration;
-                    statusText.innerText = `세트 종료! 휴식 취하며 반대 손 교대 (REST)`;
+                    
+                    const nextPhysicalSet = currentPhysicalSet + 1;
+                    const nextHandName = (nextPhysicalSet % 2 !== 0) ? '왼손' : '오른손';
+                    const nextHandTargetSet = (nextPhysicalSet % 2 !== 0) ? Math.floor((nextPhysicalSet - 1) / 2) + 1 : Math.floor(nextPhysicalSet / 2);
+
+                    statusText.innerText = `세트 휴식 중! [${nextHandName} 세트 ${nextHandTargetSet}] 대기 전환하세요.`;
                     statusText.className = "text-xs font-bold text-purple-600 dark:text-purple-400 tracking-wide uppercase";
                     updateBadges(bRest);
                     updateActiveCard(null);
                     setSqueezePercent(0);
-                    triggerPhaseTransition("SET REST!", 440, true, 'bg-purple-500');
+                    triggerPhaseTransition(`${nextHandName} 교대!`, 440, true, 'bg-purple-500');
+
+                    // Pre-increment physical set during rest phase so dashboard displays active hand correctly
+                    currentPhysicalSet++;
+                    updateSetDisplay();
                 }
             }
 
@@ -588,16 +631,15 @@
                 restTimeInput.disabled = false;
                 isRunning = false;
                 currentRep = 0;
-                currentSet = 1;
-                currentRepText.innerText = "0";
-                currentSetText.innerText = "1";
+                currentPhysicalSet = 1;
+                document.getElementById('rep-current').innerText = "0";
                 display.innerHTML = `0.00<span class="text-lg text-slate-400 dark:text-slate-500">s</span>`;
+                updateSetDisplay();
                 
                 playBeepSound(880, 0.1);
                 setTimeout(() => playBeepSound(1318.51, 0.4), 120);
             }
 
-            // Launch first loop rep sequence directly
             initiateNextTransition('prepare');
 
             timerInterval = setInterval(() => {
@@ -606,7 +648,6 @@
                     if (transitionDelayLeft <= 0) {
                         inTransitionDelay = false;
                     }
-                    // Halt countdown visually at start of phase duration during delay
                     display.innerHTML = `${Math.max(0, timeLeft).toFixed(2)}<span class="text-lg text-slate-400 dark:text-slate-500">s</span>`;
                     return;
                 }
@@ -622,28 +663,25 @@
                         initiateNextTransition('release');
                     } else if (phase === 'release') {
                         currentRep++;
-                        currentRepText.innerText = currentRep;
+                        document.getElementById('rep-current').innerText = currentRep;
 
                         if (currentRep >= maxReps) {
-                            if (currentSet >= maxSets) {
+                            const maxPhysicalSets = maxSets * 2;
+                            if (currentPhysicalSet >= maxPhysicalSets) {
                                 finalizeWorkout();
                             } else {
                                 initiateNextTransition('rest');
                             }
                         } else {
-                            // Loop immediately back into "Prepare" state before next rep (Pause deleted)
                             initiateNextTransition('prepare');
                         }
                     } else if (phase === 'rest') {
-                        currentSet++;
                         currentRep = 0;
-                        currentSetText.innerText = currentSet;
-                        currentRepText.innerText = currentRep;
+                        document.getElementById('rep-current').innerText = currentRep;
                         initiateNextTransition('prepare');
                     }
                 }
 
-                // Smooth live simulation rendering based on remaining timers
                 if (!inTransitionDelay) {
                     if (phase === 'squeeze') {
                         const elapsed = SQUEEZE_DURATION - timeLeft;
@@ -671,9 +709,8 @@
             flashOverlay.classList.add('hidden');
             setSqueezePercent(0);
             currentRep = 0;
-            currentSet = 1;
-            currentRepText.innerText = "0";
-            currentSetText.innerText = "1";
+            currentPhysicalSet = 1;
+            document.getElementById('rep-current').innerText = "0";
 
             display.innerHTML = `0.00<span class="text-lg text-slate-400 dark:text-slate-500">s</span>`;
             statusText.innerText = "대기 중";
@@ -687,6 +724,7 @@
             restTimeInput.disabled = false;
             isRunning = false;
 
+            updateSetDisplay();
             updateActiveCard(step1);
         }
 
