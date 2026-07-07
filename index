@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>도넛 악력기 올바른 사용법 가이드</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800&display=swap');
+        body {
+            font-family: 'Pretendard', sans-serif;
+        }
+        #donut-body, #donut-hole, #donut-inner-line {
+            transition: rx 0.3s ease-out, ry 0.3s ease-out;
+        }
+        @keyframes flash-animation {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        .animate-flash-fast {
+            animation: flash-animation 0.2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col justify-between antialiased transition-colors duration-300">
+
+    <!-- Header -->
+    <header class="border-b border-slate-200 bg-white/80 dark:border-slate-800 dark:bg-slate-900/80 backdrop-blur sticky top-0 z-50 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+                <h1 class="text-lg font-extrabold tracking-tight text-slate-900 dark:text-white">DONUT GRIP WORKOUT</h1>
+            </div>
+            <span class="text-xs bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-300 px-3 py-1 rounded-full font-medium">손목 강화 및 건강 루틴 v1.4</span>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-8 flex-1 w-full space-y-8">
+        
+        <!-- Hero Section & Title -->
+        <div class="text-center space-y-3">
+            <span class="text-emerald-600 dark:text-emerald-400 font-semibold text-sm tracking-wider uppercase">Health & Wrist Alignment</span>
+            <h2 class="text-3xl md:text-4xl font-black tracking-tight text-slate-900 dark:text-white">도넛 악력기 올바른 사용법</h2>
+            <p class="text-slate-600 dark:text-slate-400 text-sm md:text-base max-w-lg mx-auto">
+                스포츠 의학 기준 전완근 인대 강화 및 손목 안정성 극대화 가이드.<br>안내 타이머의 지시에 맞춰 양손을 안전하게 단련하세요.
+            </p>
+        </div>
+
+        <!-- Section 1: Step-by-Step Mechanism Guide (의학적 3단계 설명) -->
+        <section class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 md:p-8 shadow-md dark:shadow-xl transition-colors duration-300">
+            <div class="space-y-6">
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <span class="flex items-center justify-center w-6 h-6 rounded bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-mono">01</span>
+                    손목 건강을 위한 표준 운동 파라미터
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Step 1 Card -->
+                    <div id="step-1" class="p-5 rounded-xl bg-slate-50 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 transition-all duration-200 cursor-pointer hover:border-emerald-500/50 flex flex-col justify-between min-h-[140px]">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">1. 정확한 손가락 밀착</h4>
+                                <span class="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded">정렬</span>
+                            </div>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">손바닥 하단의 두툼한 부위에 고정하고, 네 손가락의 <strong>두 번째 마디</strong>로 감싸 쥐어 손가락 관절 부하를 최소화합니다.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 Card -->
+                    <div id="step-2" class="p-5 rounded-xl bg-slate-50 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 transition-all duration-200 cursor-pointer hover:border-emerald-500/50 flex flex-col justify-between min-h-[140px]">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="font-bold text-slate-700 dark:text-slate-300 text-sm">2. 2초 수축 & 3초 유지</h4>
+                                <span class="text-[10px] font-mono text-slate-500 font-bold bg-slate-200 dark:bg-slate-800 px-2 py-0.5 rounded">지그시 압착</span>
+                            </div>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">반동 없이 2초간 지그시 압착하여 <strong>안쪽 벽면을 완전히 밀착</strong>시킨 후, 3초간 정점에서 강하게 유지합니다.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 Card -->
+                    <div id="step-3" class="p-5 rounded-xl bg-slate-50 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 transition-all duration-200 cursor-pointer hover:border-emerald-500/50 flex flex-col justify-between min-h-[140px]">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="font-bold text-slate-700 dark:text-slate-300 text-sm">3. 3초 이완 & 2초 준비</h4>
+                                <span class="text-[10px] font-mono text-slate-500 font-bold bg-slate-200 dark:bg-slate-800 px-2 py-0.5 rounded">탄성 저항</span>
+                            </div>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">탁 놓지 말고 고무의 복원력에 버티며 3초간 서서히 손을 편 뒤, 매 회차 시작 전 <strong>2초 동안 정렬을 가다듬습니다.</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Wrist Alert & Posture (틀린자세 vs 바른자세) -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Bad Posture -->
+            <div class="bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/50 rounded-2xl p-6 space-y-4 transition-colors duration-300">
+                <div class="flex items-center gap-2 text-red-600 dark:text-red-400">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                    <h3 class="font-bold text-lg text-slate-900 dark:text-white">경고: 손목 건강을 해치는 치팅 동작</h3>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex gap-3 items-start bg-white/80 dark:bg-slate-950/50 p-3 rounded-lg border border-red-100 dark:border-transparent">
+                        <div class="w-5 h-5 rounded-full bg-red-100 dark:bg-red-500/20 text-red-600 dark:text-red-400 flex items-center justify-center font-bold text-xs shrink-0">✕</div>
+                        <div>
+                            <h4 class="font-semibold text-sm text-slate-800 dark:text-slate-200">손목 관절의 인위적 꺾임</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-400">전완근 근력이 부족할 때 손목을 몸 안쪽으로 과도하게 구부려 꺾으면 정중신경이 압박받아 건염이 발생합니다.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 items-start bg-white/80 dark:bg-slate-950/50 p-3 rounded-lg border border-red-100 dark:border-transparent">
+                        <div class="w-5 h-5 rounded-full bg-red-100 dark:bg-red-500/20 text-red-600 dark:text-red-400 flex items-center justify-center font-bold text-xs shrink-0">✕</div>
+                        <div>
+                            <h4 class="font-semibold text-sm text-slate-800 dark:text-slate-200">튕기듯이 힘 빼기 (이완 실종)</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-400">수축 후 손가락을 탁 놓아버리면 건의 원심성 수축 자극이 사라져 손목 강화 기능이 반감됩니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Good Posture -->
+            <div class="bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/50 rounded-2xl p-6 space-y-4 transition-colors duration-300">
+                <div class="flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <h3 class="font-bold text-lg text-slate-900 dark:text-white">안전 정렬과 의학적 효과</h3>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex gap-3 items-start bg-white/80 dark:bg-slate-950/50 p-3 rounded-lg border border-emerald-100 dark:border-transparent">
+                        <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-xs shrink-0">✓</div>
+                        <div>
+                            <h4 class="font-semibold text-sm text-slate-800 dark:text-slate-200">손목-팔뚝 중립 일직선</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-400">쥐고 펴는 전 과정에서 손목은 꺾이지 않고 전완(팔뚝)과 완벽한 수평 중립을 유지해야 건 리모델링이 원활해집니다.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 items-start bg-white/80 dark:bg-slate-950/50 p-3 rounded-lg border border-emerald-100 dark:border-transparent">
+                        <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-xs shrink-0">✓</div>
+                        <div>
+                            <h4 class="font-semibold text-sm text-slate-800 dark:text-slate-200">10~12회 최적 볼륨 수렴</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-400">세트당 10~12회 반복은 전완근 심부 근섬유에 관절 손상 없이 가장 안전하게 대사적 스트레스를 줄 수 있는 과학적 횟수입니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Interactive Workout Helper (인지 지연 극복형 인텔리전트 루프 타이머) -->
+        <section class="bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 md:p-8 transition-colors duration-300 shadow-md">
+            <div class="max-w-xl mx-auto text-center space-y-6">
+                <div>
+                    <span class="text-xs bg-emerald-100 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold px-3 py-1 rounded-full uppercase tracking-wider">Audio-Visual Loop Timer</span>
+                    <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white mt-3">메트로놈 표준 자동 트레이닝</h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">동작 전환 안내 음성과 시각 플래시 큐에 맞춰 악력기를 조작하는 자동 가이드 훈련기입니다.</p>
+                </div>
+
+                <!-- Custom Time Setting Configurator -->
+                <div class="bg-slate-100/80 dark:bg-slate-900/50 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-left space-y-3">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label for="reps-per-set-input" class="text-xs font-bold text-slate-700 dark:text-slate-300 block mb-1">세트당 횟수 설정:</label>
+                            <select id="reps-per-set-input" class="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-xs font-bold rounded-lg p-2 text-emerald-600 dark:text-emerald-400 font-mono outline-none">
+                                <option value="8">8회 반복</option>
+                                <option value="10" selected>10회 반복 (추천)</option>
+                                <option value="12">12회 반복 (상급)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="total-sets-input" class="text-xs font-bold text-slate-700 dark:text-slate-300 block mb-1">목표 세트 수 선택:</label>
+                            <select id="total-sets-input" class="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-xs font-bold rounded-lg p-2 text-emerald-600 dark:text-emerald-400 font-mono outline-none">
+                                <option value="2">2 세트 수행</option>
+                                <option value="3" selected>3 세트 수행 (표준)</option>
+                                <option value="4">4 세트 수행</option>
+                                <option value="5">5 세트 수행</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between border-t border-slate-200 dark:border-slate-800 pt-2.5">
+                        <label for="rest-time-input" class="text-xs font-bold text-slate-700 dark:text-slate-300">세트 간 휴식 시간:</label>
+                        <select id="rest-time-input" class="bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-xs font-bold rounded-lg p-1 px-2 text-emerald-600 dark:text-emerald-400 font-mono outline-none">
+                            <option value="30" selected>30초 (기본 건강목적)</option>
+                            <option value="45">45초 (지구력 향상)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Live Visual Simulator Connected with Mask Geometry -->
+                <div class="flex flex-col items-center justify-center bg-slate-100 dark:bg-slate-950/60 rounded-xl p-6 border border-slate-200 dark:border-slate-800/50 min-h-[240px] relative overflow-hidden transition-colors duration-300">
+                    <div class="absolute top-3 left-3 text-xs text-slate-400 dark:text-slate-500 font-mono">LIVE VISUAL SIMULATOR</div>
+                    
+                    <!-- Donut Container -->
+                    <div class="relative flex items-center justify-center w-36 h-36">
+                        <div id="donut-glow" class="absolute inset-0 bg-emerald-500/10 rounded-full blur-2xl transition-all duration-300 opacity-50 scale-75"></div>
+                        
+                        <svg id="interactive-donut-svg" class="w-32 h-32 cursor-pointer select-none" viewBox="0 0 100 100">
+                            <defs>
+                                <mask id="donut-mask">
+                                    <rect x="0" y="0" width="100" height="100" fill="white" />
+                                    <ellipse id="donut-hole" cx="50" cy="50" rx="24" ry="24" fill="black" />
+                                </mask>
+                            </defs>
+                            <ellipse id="donut-body" cx="50" cy="50" rx="44" ry="44" fill="#10b981" mask="url(#donut-mask)" />
+                            <ellipse id="donut-inner-line" cx="50" cy="50" rx="24" ry="24" fill="none" stroke="#059669" stroke-width="2" stroke-dasharray="2 2" mask="url(#donut-mask)" />
+                        </svg>
+                    </div>
+
+                    <!-- Visual Feedback Slider -->
+                    <div class="w-full max-w-xs mt-3 space-y-1">
+                        <div class="flex justify-between text-xs font-mono text-slate-600 dark:text-slate-400">
+                            <span>수축 강도</span>
+                            <span id="squeeze-percent" class="font-bold">0%</span>
+                        </div>
+                        <div class="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden transition-colors duration-300">
+                            <div id="squeeze-bar" class="w-0 h-full bg-emerald-500"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timer Display & Flash Notice Box Inside -->
+                <div id="timer-card" class="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl py-6 px-6 space-y-3 transition-colors duration-300 relative min-h-[160px] flex flex-col justify-center items-center">
+                    
+                    <!-- Progress Badges Left/Right -->
+                    <div class="absolute top-3 left-4 text-xs font-mono font-black text-slate-500">
+                        세트: <span id="set-current">1</span> / <span id="set-total">3</span>
+                    </div>
+                    <div class="absolute top-3 right-4 text-xs font-mono font-black text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">
+                        회차: <span id="rep-current">0</span> / <span id="rep-total">10</span>
+                    </div>
+
+                    <!-- Cognitive Transition Flash Overlay Layer -->
+                    <div id="flash-overlay" class="absolute inset-0 z-10 flex items-center justify-center rounded-2xl hidden bg-emerald-500 dark:bg-emerald-600">
+                        <span id="flash-text" class="text-2xl md:text-3xl font-black text-slate-950 dark:text-white tracking-widest animate-flash-fast">지시어</span>
+                    </div>
+
+                    <!-- Standard Timer Numbers -->
+                    <div id="normal-timer-content" class="w-full text-center space-y-1">
+                        <div id="timer-status" class="text-xs font-bold text-slate-500 dark:text-slate-400 tracking-wide uppercase">대기 중</div>
+                        <div id="timer-display" class="text-5xl font-black text-slate-800 dark:text-white font-mono tracking-widest">0.00<span class="text-lg text-slate-400 dark:text-slate-500">s</span></div>
+                    </div>
+                    
+                    <!-- Training Steps Visual representation indicators -->
+                    <div id="timer-steps-indicators" class="flex flex-wrap justify-center gap-1.5 text-[10px] font-mono pt-1">
+                        <span id="badge-prepare" class="px-2 py-0.5 rounded bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400 transition-all">회차준비 (2초)</span>
+                        <span id="badge-squeeze" class="px-2 py-0.5 rounded bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400 transition-all">수축하기 (2초)</span>
+                        <span id="badge-hold" class="px-2 py-0.5 rounded bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400 transition-all">꽉버티기 (3초)</span>
+                        <span id="badge-release" class="px-2 py-0.5 rounded bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400 transition-all">천천히펴기 (3초)</span>
+                        <span id="badge-rest" class="px-2 py-0.5 rounded bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400 transition-all hidden">세트휴식</span>
+                    </div>
+                </div>
+
+                <!-- Timer Controls -->
+                <div class="flex justify-center gap-3">
+                    <button id="btn-start-timer" class="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-slate-950 text-sm font-bold rounded-xl transition-all shadow-lg shadow-emerald-500/20 w-full max-w-[200px]">
+                        타이머 시작
+                    </button>
+                    <button id="btn-reset-timer" class="px-6 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-slate-300 text-sm font-bold rounded-xl transition-all w-full max-w-[120px]">
+                        초기화
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Target Recommendations Card -->
+        <section class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 transition-colors duration-300 shadow-sm space-y-4">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">악력 강도별 개별 추천 세팅 가이드</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-slate-50 dark:bg-slate-950/60 p-4 rounded-xl border border-slate-200/60 dark:border-slate-800/60">
+                    <span class="text-xs text-amber-600 dark:text-amber-400 font-mono font-bold">20~30 lb (초급/재활)</span>
+                    <h4 class="font-bold text-slate-800 dark:text-white text-sm mt-0.5">인대 및 관절 적응기</h4>
+                    <p class="text-[11px] text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed">악력이 낮은 성인 및 손목 터널 증후군 방지 목적. <strong>2세트 수행</strong>을 추천하며 관절 통증 누적을 막기 위해 주 3회 격일 단련하십시오.</p>
+                </div>
+                <div class="bg-slate-50 dark:bg-slate-950/60 p-4 rounded-xl border border-slate-200/60 dark:border-slate-800/60">
+                    <span class="text-xs text-emerald-600 dark:text-emerald-400 font-mono font-bold">40~50 lb (성인 표준)</span>
+                    <h4 class="font-bold text-slate-800 dark:text-white text-sm mt-0.5">전완 부피 및 손목 강화</h4>
+                    <p class="text-[11px] text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed">체력 증진 목적의 일반 남녀 기준 표준 장력. <strong>3~4세트 수행</strong>이 가장 효율적이며 팔뚝 전반의 모세혈관과 신경 발달을 유도합니다.</p>
+                </div>
+                <div class="bg-slate-50 dark:bg-slate-950/60 p-4 rounded-xl border border-slate-200/60 dark:border-slate-800/60">
+                    <span class="text-xs text-purple-600 dark:text-purple-400 font-mono font-bold">60~70 lb (고급/선수)</span>
+                    <h4 class="font-bold text-slate-800 dark:text-white text-sm mt-0.5">근섬유 역치 파괴 단계</h4>
+                    <p class="text-[11px] text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed">강력한 그립 고정력이 필요한 고급자용 강도. 신경계 피로도가 심하므로 <strong>4~5세트 수행</strong> 후 반드시 다음 날 하루 이상 완전 휴식을 취해야 합니다.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-100 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 py-6 text-center text-xs text-slate-500 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-4">
+            <p>© 2026 Donut Grip Workout Guide. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive JS Scripts -->
+    <script>
+        // 1. Donut Squeeze Animation Handling (Mask and Ellipse geometry)
+        const donutSvg = document.getElementById('interactive-donut-svg');
+        const body = document.getElementById('donut-body');
+        const hole = document.getElementById('donut-hole');
+        const innerLine = document.getElementById('donut-inner-line');
+        const glow = document.getElementById('donut-glow');
+        const percentText = document.getElementById('squeeze-percent');
+        const squeezeBar = document.getElementById('squeeze-bar');
+
+        const step1 = document.getElementById('step-1');
+        const step2 = document.getElementById('step-2');
+        const step3 = document.getElementById('step-3');
+
+        function disableTransitions() {
+            body.style.transition = 'none';
+            hole.style.transition = 'none';
+            innerLine.style.transition = 'none';
+        }
+
+        function enableTransitions() {
+            body.style.transition = 'rx 0.3s ease-out, ry 0.3s ease-out';
+            hole.style.transition = 'rx 0.3s ease-out, ry 0.3s ease-out';
+            innerLine.style.transition = 'rx 0.3s ease-out, ry 0.3s ease-out';
+        }
+
+        function setSqueezePercent(percent) {
+            const factor = percent / 100;
+            const bodyRx = 44 - (factor * 16); 
+            const bodyRy = 44 + (factor * 3);  
+            const holeRx = Math.max(0, 24 - (factor * 24)); 
+            const holeRy = 24 + (factor * 4);               
+
+            body.setAttribute('rx', bodyRx);
+            body.setAttribute('ry', bodyRy);
+            hole.setAttribute('rx', holeRx);
+            hole.setAttribute('ry', holeRy);
+            innerLine.setAttribute('rx', holeRx);
+            innerLine.setAttribute('ry', holeRy);
+
+            glow.style.transform = `scale(${0.75 + factor * 0.45})`;
+            glow.style.opacity = 0.5 + factor * 0.5;
+            
+            percentText.innerText = `${Math.round(percent)}%`;
+            squeezeBar.style.width = `${percent}%`;
+        }
+
+        function triggerSqueeze() {
+            if (isRunning) return; 
+            enableTransitions();
+            setSqueezePercent(100);
+            percentText.classList.add('text-emerald-600', 'dark:text-emerald-400');
+            updateActiveCard(step2);
+        }
+
+        function triggerRelease() {
+            if (isRunning) return;
+            enableTransitions();
+            setSqueezePercent(0);
+            percentText.classList.remove('text-emerald-600', 'dark:text-emerald-400');
+            updateActiveCard(step3);
+            setTimeout(() => {
+                if (!isRunning && percentText.innerText === '0%') {
+                    updateActiveCard(step1);
+                }
+            }, 1500);
+        }
+
+        function updateActiveCard(activeStep) {
+            [step1, step2, step3].forEach(step => {
+                step.classList.remove('border-emerald-500', 'bg-emerald-50/50', 'dark:bg-slate-900');
+                step.classList.add('border-slate-200', 'dark:border-slate-800', 'bg-slate-50', 'dark:bg-slate-950/40');
+                
+                const badge = step.querySelector('span');
+                badge.classList.remove('bg-emerald-500/20', 'text-emerald-600', 'dark:text-emerald-400');
+                badge.classList.add('bg-slate-200', 'text-slate-500', 'dark:bg-slate-800', 'dark:text-slate-500');
+            });
+            if(activeStep) {
+                activeStep.classList.add('border-emerald-500', 'bg-emerald-50/50', 'dark:bg-slate-900');
+                activeStep.classList.remove('border-slate-200', 'dark:border-slate-800', 'bg-slate-50', 'dark:bg-slate-950/40');
+                
+                const activeBadge = activeStep.querySelector('span');
+                activeBadge.classList.remove('bg-slate-200', 'text-slate-500', 'dark:bg-slate-800', 'dark:text-slate-500');
+                activeBadge.classList.add('bg-emerald-500/20', 'text-emerald-600', 'dark:text-emerald-400');
+            }
+        }
+
+        donutSvg.addEventListener('mousedown', triggerSqueeze);
+        donutSvg.addEventListener('mouseup', triggerRelease);
+        donutSvg.addEventListener('mouseleave', triggerRelease);
+        donutSvg.addEventListener('touchstart', (e) => { e.preventDefault(); triggerSqueeze(); });
+        donutSvg.addEventListener('touchend', (e) => { e.preventDefault(); triggerRelease(); });
+
+
+        // 2. Mobile Compatible Audio Engine (Web Audio API)
+        let audioCtx = null;
+        function initAudioEngine() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        function playBeepSound(freq, duration, type = 'sine') {
+            try {
+                if (!audioCtx) return;
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                
+                osc.type = type;
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + duration);
+                
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch(e) {
+                console.error("Audio block error: ", e);
+            }
+        }
+
+
+        // 3. Advanced Workout Loop Engine (With 0.3s Transition Delays & Repetition Preparations)
+        let timerInterval;
+        let timeLeft = 0.0;
+        let isRunning = false;
+        let phase = 'idle'; // 'idle', 'prepare', 'squeeze', 'hold', 'release', 'rest'
+        let currentRep = 0;
+        let currentSet = 1;
+        
+        let inTransitionDelay = false;
+        let transitionDelayLeft = 0.0;
+        let flashTimeout;
+
+        const PREP_DURATION = 2.0; // Reduced from 3.0 to 2.0 as requested
+        const SQUEEZE_DURATION = 2.0;
+        const HOLD_DURATION = 3.0;
+        const RELEASE_DURATION = 3.0;
+        const TRANSITION_DELAY = 0.3; // 0.3s background buffer between transitions
+
+        const startBtn = document.getElementById('btn-start-timer');
+        const resetBtn = document.getElementById('btn-reset-timer');
+        const display = document.getElementById('timer-display');
+        const statusText = document.getElementById('timer-status');
+        const repsPerSetInput = document.getElementById('reps-per-set-input');
+        const totalSetsInput = document.getElementById('total-sets-input');
+        const restTimeInput = document.getElementById('rest-time-input');
+
+        const currentSetText = document.getElementById('set-current');
+        const totalSetText = document.getElementById('set-total');
+        const currentRepText = document.getElementById('rep-current');
+        const totalRepText = document.getElementById('rep-total');
+
+        const bPrepare = document.getElementById('badge-prepare');
+        const bSqueeze = document.getElementById('badge-squeeze');
+        const bHold = document.getElementById('badge-hold');
+        const bRelease = document.getElementById('badge-release');
+        const bRest = document.getElementById('badge-rest');
+
+        const flashOverlay = document.getElementById('flash-overlay');
+        const flashText = document.getElementById('flash-text');
+
+        function syncConfig() {
+            totalSetText.innerText = totalSetsInput.value;
+            totalRepText.innerText = repsPerSetInput.value;
+        }
+        repsPerSetInput.addEventListener('change', syncConfig);
+        totalSetsInput.addEventListener('change', syncConfig);
+        syncConfig();
+
+        function updateBadges(activeBadge) {
+            [bPrepare, bSqueeze, bHold, bRelease, bRest].forEach(b => {
+                b.classList.remove('bg-amber-500', 'bg-teal-500', 'bg-emerald-500', 'bg-blue-500', 'bg-purple-500', 'text-slate-950', 'text-white');
+                b.classList.add('bg-slate-200', 'text-slate-600', 'dark:bg-slate-800', 'dark:text-slate-400');
+            });
+            if (activeBadge) {
+                if (activeBadge === bPrepare) { activeBadge.classList.add('bg-amber-500', 'text-slate-950'); }
+                else if (activeBadge === bSqueeze) { activeBadge.classList.add('bg-teal-500', 'text-slate-950'); }
+                else if (activeBadge === bHold) { activeBadge.classList.add('bg-emerald-500', 'text-slate-950'); }
+                else if (activeBadge === bRelease) { activeBadge.classList.add('bg-blue-500', 'text-white'); }
+                else if (activeBadge === bRest) { activeBadge.classList.add('bg-purple-500', 'text-white'); }
+                activeBadge.classList.remove('bg-slate-200', 'text-slate-600', 'dark:bg-slate-800', 'dark:text-slate-400');
+            }
+        }
+
+        // Activates 0.5s visual overlay + plays audio frequency cue
+        function triggerPhaseTransition(directive, beepFreq, isOverlayCustom = false, customOverlayBg = '') {
+            clearTimeout(flashTimeout);
+            playBeepSound(beepFreq, 0.25, 'triangle');
+
+            flashText.innerText = directive;
+            flashOverlay.classList.remove('hidden', 'bg-emerald-500', 'bg-teal-500', 'bg-blue-500', 'bg-purple-500', 'bg-amber-500');
+            
+            if(isOverlayCustom) {
+                flashOverlay.classList.add(customOverlayBg);
+            } else {
+                flashOverlay.classList.add('bg-emerald-500');
+            }
+            flashOverlay.style.opacity = '1';
+
+            flashTimeout = setTimeout(() => {
+                flashOverlay.classList.add('hidden');
+            }, 500);
+        }
+
+        function runTimerLoop() {
+            initAudioEngine(); // Unlocks Audio Context on active user gesture
+            
+            if (isRunning) return;
+            isRunning = true;
+            
+            startBtn.disabled = true;
+            startBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            repsPerSetInput.disabled = true;
+            totalSetsInput.disabled = true;
+            restTimeInput.disabled = true;
+
+            disableTransitions();
+
+            const maxReps = parseInt(repsPerSetInput.value);
+            const maxSets = parseInt(totalSetsInput.value);
+            const restDuration = parseFloat(restTimeInput.value);
+
+            // Moves smoothly to the next action or increments sets
+            function initiateNextTransition(targetPhase) {
+                inTransitionDelay = true;
+                transitionDelayLeft = TRANSITION_DELAY;
+                phase = targetPhase;
+
+                if (phase === 'prepare') {
+                    timeLeft = PREP_DURATION;
+                    statusText.innerText = `${currentRep + 1}회차 시작 준비: 파지를 정돈하세요.`;
+                    statusText.className = "text-xs font-bold text-amber-600 dark:text-amber-400 tracking-wide uppercase";
+                    updateBadges(bPrepare);
+                    updateActiveCard(step1);
+                    setSqueezePercent(0);
+                    triggerPhaseTransition("GET READY!", 349.23, true, 'bg-amber-500');
+                } 
+                else if (phase === 'squeeze') {
+                    timeLeft = SQUEEZE_DURATION;
+                    statusText.innerText = `지그시 완전히 수축시키세요! (SQUEEZE)`;
+                    statusText.className = "text-xs font-bold text-teal-600 dark:text-teal-400 tracking-wide uppercase";
+                    updateBadges(bSqueeze);
+                    updateActiveCard(step2);
+                    setSqueezePercent(0);
+                    triggerPhaseTransition("SQUEEZE!!", 587.33, true, 'bg-teal-500');
+                } 
+                else if (phase === 'hold') {
+                    timeLeft = HOLD_DURATION;
+                    statusText.innerText = `벽면 완전 밀착 상태 유지! (HOLD)`;
+                    statusText.className = "text-xs font-bold text-emerald-600 dark:text-emerald-400 tracking-wide uppercase animate-pulse";
+                    updateBadges(bHold);
+                    setSqueezePercent(100);
+                    triggerPhaseTransition("HOLD!!", 880, true, 'bg-emerald-500');
+                } 
+                else if (phase === 'release') {
+                    timeLeft = RELEASE_DURATION;
+                    statusText.innerText = `탄성에 맞서며 3초간 서서히 펴세요. (RELEASE)`;
+                    statusText.className = "text-xs font-bold text-blue-600 dark:text-blue-400 tracking-wide uppercase";
+                    updateBadges(bRelease);
+                    updateActiveCard(step3);
+                    setSqueezePercent(100);
+                    triggerPhaseTransition("RELEASE!!", 659.25, true, 'bg-blue-500');
+                } 
+                else if (phase === 'rest') {
+                    timeLeft = restDuration;
+                    statusText.innerText = `세트 종료! 휴식 취하며 반대 손 교대 (REST)`;
+                    statusText.className = "text-xs font-bold text-purple-600 dark:text-purple-400 tracking-wide uppercase";
+                    updateBadges(bRest);
+                    updateActiveCard(null);
+                    setSqueezePercent(0);
+                    triggerPhaseTransition("SET REST!", 440, true, 'bg-purple-500');
+                }
+            }
+
+            function finalizeWorkout() {
+                clearInterval(timerInterval);
+                phase = 'idle';
+                statusText.innerText = "모든 목표 세트 훈련 완료! 수고하셨습니다.";
+                statusText.className = "text-xs font-bold text-emerald-600 dark:text-emerald-400 font-black tracking-wider";
+                updateBadges(null);
+                updateActiveCard(step1);
+                setSqueezePercent(0);
+                enableTransitions();
+
+                startBtn.disabled = false;
+                startBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                repsPerSetInput.disabled = false;
+                totalSetsInput.disabled = false;
+                restTimeInput.disabled = false;
+                isRunning = false;
+                currentRep = 0;
+                currentSet = 1;
+                currentRepText.innerText = "0";
+                currentSetText.innerText = "1";
+                display.innerHTML = `0.00<span class="text-lg text-slate-400 dark:text-slate-500">s</span>`;
+                
+                playBeepSound(880, 0.1);
+                setTimeout(() => playBeepSound(1318.51, 0.4), 120);
+            }
+
+            // Launch first loop rep sequence directly
+            initiateNextTransition('prepare');
+
+            timerInterval = setInterval(() => {
+                if (inTransitionDelay) {
+                    transitionDelayLeft -= 0.01;
+                    if (transitionDelayLeft <= 0) {
+                        inTransitionDelay = false;
+                    }
+                    // Halt countdown visually at start of phase duration during delay
+                    display.innerHTML = `${Math.max(0, timeLeft).toFixed(2)}<span class="text-lg text-slate-400 dark:text-slate-500">s</span>`;
+                    return;
+                }
+
+                timeLeft -= 0.01;
+
+                if (timeLeft <= 0) {
+                    if (phase === 'prepare') {
+                        initiateNextTransition('squeeze');
+                    } else if (phase === 'squeeze') {
+                        initiateNextTransition('hold');
+                    } else if (phase === 'hold') {
+                        initiateNextTransition('release');
+                    } else if (phase === 'release') {
+                        currentRep++;
+                        currentRepText.innerText = currentRep;
+
+                        if (currentRep >= maxReps) {
+                            if (currentSet >= maxSets) {
+                                finalizeWorkout();
+                            } else {
+                                initiateNextTransition('rest');
+                            }
+                        } else {
+                            // Loop immediately back into "Prepare" state before next rep (Pause deleted)
+                            initiateNextTransition('prepare');
+                        }
+                    } else if (phase === 'rest') {
+                        currentSet++;
+                        currentRep = 0;
+                        currentSetText.innerText = currentSet;
+                        currentRepText.innerText = currentRep;
+                        initiateNextTransition('prepare');
+                    }
+                }
+
+                // Smooth live simulation rendering based on remaining timers
+                if (!inTransitionDelay) {
+                    if (phase === 'squeeze') {
+                        const elapsed = SQUEEZE_DURATION - timeLeft;
+                        const percent = (elapsed / SQUEEZE_DURATION) * 100;
+                        setSqueezePercent(Math.min(100, Math.max(0, percent)));
+                    } else if (phase === 'release') {
+                        const percent = (timeLeft / RELEASE_DURATION) * 100;
+                        setSqueezePercent(Math.min(100, Math.max(0, percent)));
+                    } else if (phase === 'prepare' || phase === 'rest') {
+                        setSqueezePercent(0);
+                    } else if (phase === 'hold') {
+                        setSqueezePercent(100);
+                    }
+                }
+
+                display.innerHTML = `${Math.max(0, timeLeft).toFixed(2)}<span class="text-lg text-slate-400 dark:text-slate-500">s</span>`;
+            }, 10);
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            clearTimeout(flashTimeout);
+            enableTransitions();
+            
+            flashOverlay.classList.add('hidden');
+            setSqueezePercent(0);
+            currentRep = 0;
+            currentSet = 1;
+            currentRepText.innerText = "0";
+            currentSetText.innerText = "1";
+
+            display.innerHTML = `0.00<span class="text-lg text-slate-400 dark:text-slate-500">s</span>`;
+            statusText.innerText = "대기 중";
+            statusText.className = "text-xs font-bold text-slate-500 dark:text-slate-400 tracking-wide uppercase";
+            updateBadges(null);
+            
+            startBtn.disabled = false;
+            startBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            repsPerSetInput.disabled = false;
+            totalSetsInput.disabled = false;
+            restTimeInput.disabled = false;
+            isRunning = false;
+
+            updateActiveCard(step1);
+        }
+
+        startBtn.addEventListener('click', runTimerLoop);
+        resetBtn.addEventListener('click', resetTimer);
+
+        // Bootstrap visual indicators
+        updateActiveCard(step1);
+    </script>
+</body>
+</html>
