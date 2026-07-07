@@ -559,15 +559,30 @@
                 const overlayBg = (currentPhysicalSet % 2 !== 0) ? 'bg-emerald-500' : 'bg-blue-500';
                 const beepFreq = (currentPhysicalSet % 2 !== 0) ? 587.33 : 698.46; // Alternating tones
 
-                if (phase === 'prepare') {
-                    timeLeft = PREP_DURATION;
-                    statusText.innerText = `${activeHandName} ${currentRep + 1}회차 시작 준비: 파지를 정돈하세요.`;
-                    statusText.className = `text-xs font-bold ${activeHandColor} tracking-wide uppercase`;
-                    updateBadges(bPrepare);
-                    updateActiveCard(step1);
-                    setSqueezePercent(0);
-                    triggerPhaseTransition(`${activeHandName} 준비!`, 349.23, true, 'bg-amber-500');
-                } 
+if (phase === 'prepare') {
+    timeLeft = PREP_DURATION;
+    
+    let repLabelText = "";
+    let overlayLabelText = "";
+    
+    if (currentRep === 0) {
+        repLabelText = `${activeHandName} 준비! 파지를 정돈하세요.`;
+        overlayLabelText = `${activeHandName} 준비!`;
+    } else if (currentRep === maxReps - 1) {
+        repLabelText = `${activeHandName} 마지막 회차! 온 힘을 다하세요.`;
+        overlayLabelText = `${activeHandName} 마지막!`;
+    } else {
+        repLabelText = `${activeHandName} ${currentRep + 1}회차 시작 준비: 파지를 정돈하세요.`;
+        overlayLabelText = `${activeHandName} ${currentRep + 1}회차`;
+    }
+
+    statusText.innerText = repLabelText;
+    statusText.className = `text-xs font-bold ${activeHandColor} tracking-wide uppercase`;
+    updateBadges(bPrepare);
+    updateActiveCard(step1);
+    setSqueezePercent(0);
+    triggerPhaseTransition(overlayLabelText, 349.23, true, 'bg-amber-500');
+}
                 else if (phase === 'squeeze') {
                     timeLeft = SQUEEZE_DURATION;
                     statusText.innerText = `지그시 완전히 수축시키세요! (SQUEEZE)`;
