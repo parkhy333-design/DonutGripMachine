@@ -82,10 +82,10 @@
                     <div id="step-3" class="p-5 rounded-xl bg-slate-50 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 transition-all duration-200 cursor-pointer hover:border-emerald-500/50 flex flex-col justify-between min-h-[140px]">
                         <div>
                             <div class="flex justify-between items-center mb-2">
-                                <h4 class="font-bold text-slate-700 dark:text-slate-300 text-sm">3. 3초 이완 & 2초 준비</h4>
+                                <h4 class="font-bold text-slate-700 dark:text-slate-300 text-sm">3. 3초 펴기 & 1.5초 준비</h4>
                                 <span class="text-[10px] font-mono text-slate-500 font-bold bg-slate-200 dark:bg-slate-800 px-2 py-0.5 rounded">탄성 저항</span>
                             </div>
-                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">탁 놓지 말고 고무의 복원력에 버티며 3초간 서서히 손을 편 뒤, 매 회차 시작 전 <strong>2초 동안 정렬을 가다듬습니다.</strong></p>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">탁 놓지 말고 고무의 복원력에 버티며 3초간 서서히 손을 편 뒤, 매 회차 시작 전 <strong>1.5초 동안 정렬을 가다듬습니다.</strong></p>
                         </div>
                     </div>
                 </div>
@@ -154,34 +154,32 @@
 
                 <!-- Custom Time Setting Configurator -->
                 <div class="bg-slate-100/80 dark:bg-slate-900/50 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-left space-y-3">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="grid grid-cols-3 gap-2 sm:gap-4">
                         <div>
-                            <label for="reps-per-set-input" class="text-xs font-bold text-slate-700 dark:text-slate-300 block mb-1">세트당 횟수 설정:</label>
+                            <label for="reps-per-set-input" class="text-xs font-bold text-slate-700 dark:text-slate-300 block mb-1">세트당 횟수</label>
                             <select id="reps-per-set-input" class="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-xs font-bold rounded-lg p-2 text-emerald-600 dark:text-emerald-400 font-mono outline-none">
-                                <option value="8">8회 반복</option>
-                                <option value="10" selected>10회 반복 (추천)</option>
-                                <option value="12">12회 반복 (상급)</option>
+                                <option value="10">10회</option>
+                                <option value="15" selected>15회</option>
+                                <option value="20">20회</option>
                             </select>
                         </div>
                         <div>
-                            <label for="total-sets-input" class="text-xs font-bold text-slate-700 dark:text-slate-300 block mb-1">양손 각각 수행 세트 수:</label>
+                            <label for="total-sets-input" class="text-xs font-bold text-slate-700 dark:text-slate-300 block mb-1">수행 세트 수</label>
                             <select id="total-sets-input" class="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-xs font-bold rounded-lg p-2 text-emerald-600 dark:text-emerald-400 font-mono outline-none">
-                                <option value="1">1 세트씩 수행</option>
-                                <option value="2" selected>2 세트씩 수행</option>
-                                <option value="3">3 세트씩 수행 (표준)</option>
-                                <option value="4">4 세트씩 수행</option>
-                                <option value="5">5 세트씩 수행</option>
+                                <option value="3" selected>3회</option>
+                                <option value="4">4회</option>
+                                <option value="5">5회</option>
                             </select>
                         </div>
-                    </div>
-                    
-                    <div class="flex items-center justify-between border-t border-slate-200 dark:border-slate-800 pt-2.5">
-                        <label for="hold-time-input" class="text-xs font-bold text-slate-700 dark:text-slate-300">정점 꽉버티기 시간:</label>
-                        <select id="hold-time-input" class="bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-xs font-bold rounded-lg p-1 px-2 text-emerald-600 dark:text-emerald-400 font-mono outline-none">
-                            <option value="3" selected>3초 (초급 / 재활)</option>
-                            <option value="5">5초 (중급 / 전완 벌크)</option>
-                            <option value="10">10초 (고급 / 신경 극대화)</option>
-                        </select>
+                        <div>
+                            <label for="hold-time-input" class="text-xs font-bold text-slate-700 dark:text-slate-300 block mb-1">버티기</label>
+                            <select id="hold-time-input" class="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-xs font-bold rounded-lg p-2 text-emerald-600 dark:text-emerald-400 font-mono outline-none">
+                                <option value="2" selected>2초</option>
+                                <option value="3">3초</option>
+                                <option value="4">4초</option>
+                                <option value="5">5초</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
@@ -222,10 +220,10 @@
                     
                     <!-- Progress Badges Left/Right -->
                     <div class="absolute top-3 left-4 text-xs font-mono font-black text-slate-500">
-                        세트: <span id="set-hand-label" class="text-emerald-600 dark:text-emerald-400 font-bold">왼손</span> <span id="set-current">1</span> / <span id="set-total">2</span>
+                        세트: <span id="set-hand-label" class="text-emerald-600 dark:text-emerald-400 font-bold">왼손</span> <span id="set-current">1</span> / <span id="set-total">3</span>
                     </div>
                     <div class="absolute top-3 right-4 text-xs font-mono font-black text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">
-                        회차: <span id="rep-current">0</span> / <span id="rep-total">10</span>
+                        회차: <span id="rep-current">0</span> / <span id="rep-total">15</span>
                     </div>
 
                     <!-- Cognitive Transition Flash Overlay Layer -->
@@ -241,10 +239,10 @@
                     
                     <!-- Training Steps Visual representation indicators -->
                     <div id="timer-steps-indicators" class="flex flex-wrap justify-center gap-1.5 text-[10px] font-mono pt-1">
-                        <span id="badge-prepare" class="px-2 py-0.5 rounded bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400 transition-all">회차준비 (2초)</span>
-                        <span id="badge-squeeze" class="px-2 py-0.5 rounded bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400 transition-all">수축하기 (2초)</span>
-                        <span id="badge-hold" class="px-2 py-0.5 rounded bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400 transition-all">꽉버티기</span>
-                        <span id="badge-release" class="px-2 py-0.5 rounded bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400 transition-all">천천히펴기 (3초)</span>
+                        <span id="badge-prepare" class="px-2 py-0.5 rounded bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400 transition-all">회차 준비 (1.5초)</span>
+                        <span id="badge-squeeze" class="px-2 py-0.5 rounded bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400 transition-all">수축 (2초)</span>
+                        <span id="badge-hold" class="px-2 py-0.5 rounded bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400 transition-all">버티기</span>
+                        <span id="badge-release" class="px-2 py-0.5 rounded bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400 transition-all">펴기 (3초)</span>
                         <span id="badge-rest" class="px-2 py-0.5 rounded bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400 transition-all hidden">세트휴식</span>
                     </div>
                 </div>
@@ -434,12 +432,12 @@
         let flashTimeout;
 
         // Configuration Limits
-        let maxReps = 10;
-        let maxSets = 2; // Default to 2 sets
-        let holdDuration = 3.0; // Customizable holding duration
+        let maxReps = 15;
+        let maxSets = 3; // Default to 3 sets
+        let holdDuration = 2.0; // Customizable holding duration
         const REST_DURATION = 30.0; // Standard 30s rest between sets fixed behind the scenes
 
-        const PREP_DURATION = 2.0; 
+        const PREP_DURATION = 1.5; 
         const SQUEEZE_DURATION = 2.0;
         const RELEASE_DURATION = 3.0;
         const TRANSITION_DELAY = 0.3; 
@@ -474,7 +472,7 @@
             holdDuration = parseFloat(holdTimeInput.value);
             
             // Render the step badge holding time description
-            bHold.innerText = `꽉버티기 (${Math.round(holdDuration)}초)`;
+            bHold.innerText = `버티기 (${Math.round(holdDuration)}초)`;
         }
         repsPerSetInput.addEventListener('change', syncConfig);
         totalSetsInput.addEventListener('change', syncConfig);
