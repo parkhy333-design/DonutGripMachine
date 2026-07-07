@@ -32,7 +32,7 @@
                 <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
                 <h1 class="text-lg font-extrabold tracking-tight text-slate-900 dark:text-white">DONUT GRIP WORKOUT</h1>
             </div>
-            <span class="text-xs bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-300 px-3 py-1 rounded-full font-medium">손목 강화 및 건강 루틴 v1.5</span>
+            <span class="text-xs bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-300 px-3 py-1 rounded-full font-medium">손목 강화 및 건강 루틴 v1.6</span>
         </div>
     </header>
 
@@ -71,10 +71,10 @@
                     <div id="step-2" class="p-5 rounded-xl bg-slate-50 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 transition-all duration-200 cursor-pointer hover:border-emerald-500/50 flex flex-col justify-between min-h-[140px]">
                         <div>
                             <div class="flex justify-between items-center mb-2">
-                                <h4 class="font-bold text-slate-700 dark:text-slate-300 text-sm">2. 2초 수축 & 3초 유지</h4>
+                                <h4 class="font-bold text-slate-700 dark:text-slate-300 text-sm">2. 2초 수축 & 지그시 유지</h4>
                                 <span class="text-[10px] font-mono text-slate-500 font-bold bg-slate-200 dark:bg-slate-800 px-2 py-0.5 rounded">지그시 압착</span>
                             </div>
-                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">반동 없이 2초간 지그시 압착하여 <strong>안쪽 벽면을 완전히 밀착</strong>시킨 후, 3초간 정점에서 강하게 유지합니다.</p>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">반동 없이 2초간 지그시 압착하여 <strong>안쪽 벽면을 완전히 밀착</strong>시킨 후, 설정된 버티기 시간만큼 정점에서 강하게 유지합니다.</p>
                         </div>
                     </div>
 
@@ -164,21 +164,23 @@
                             </select>
                         </div>
                         <div>
-                            <label for="total-sets-input" class="text-xs font-bold text-slate-700 dark:text-slate-300 block mb-1">목표 세트 수 선택 (양손 각각):</label>
+                            <label for="total-sets-input" class="text-xs font-bold text-slate-700 dark:text-slate-300 block mb-1">양손 각각 수행 세트 수:</label>
                             <select id="total-sets-input" class="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-xs font-bold rounded-lg p-2 text-emerald-600 dark:text-emerald-400 font-mono outline-none">
-                                <option value="2">2 세트 수행</option>
-                                <option value="3" selected>3 세트 수행 (표준)</option>
-                                <option value="4">4 세트 수행</option>
-                                <option value="5">5 세트 수행</option>
+                                <option value="1">1 세트씩 수행</option>
+                                <option value="2" selected>2 세트씩 수행</option>
+                                <option value="3">3 세트씩 수행 (표준)</option>
+                                <option value="4">4 세트씩 수행</option>
+                                <option value="5">5 세트씩 수행</option>
                             </select>
                         </div>
                     </div>
                     
                     <div class="flex items-center justify-between border-t border-slate-200 dark:border-slate-800 pt-2.5">
-                        <label for="rest-time-input" class="text-xs font-bold text-slate-700 dark:text-slate-300">세트 간 휴식 시간:</label>
-                        <select id="rest-time-input" class="bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-xs font-bold rounded-lg p-1 px-2 text-emerald-600 dark:text-emerald-400 font-mono outline-none">
-                            <option value="30" selected>30초 (기본 건강목적)</option>
-                            <option value="45">45초 (지구력 향상)</option>
+                        <label for="hold-time-input" class="text-xs font-bold text-slate-700 dark:text-slate-300">정점 꽉버티기 시간:</label>
+                        <select id="hold-time-input" class="bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-xs font-bold rounded-lg p-1 px-2 text-emerald-600 dark:text-emerald-400 font-mono outline-none">
+                            <option value="3" selected>3초 (초급 / 재활)</option>
+                            <option value="5">5초 (중급 / 전완 벌크)</option>
+                            <option value="10">10초 (고급 / 신경 극대화)</option>
                         </select>
                     </div>
                 </div>
@@ -218,10 +220,9 @@
                 <!-- Timer Display & Flash Notice Box Inside -->
                 <div id="timer-card" class="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl py-6 px-6 space-y-3 transition-colors duration-300 relative min-h-[160px] flex flex-col justify-center items-center">
                     
-                    <!-- Progress Badges Left/Right Dynamic Dashboard -->
-                    <div class="absolute top-3 left-4 flex gap-4 text-xs font-mono font-black">
-                        <span id="set-left-panel" class="text-emerald-600 dark:text-emerald-400 border-b-2 border-emerald-500 pb-0.5 transition-all">왼손: <span id="set-left-current">1</span>/<span id="set-left-total">3</span></span>
-                        <span id="set-right-panel" class="text-slate-400 border-b-2 border-transparent pb-0.5 transition-all">오른손: <span id="set-right-current">0</span>/<span id="set-right-total">3</span></span>
+                    <!-- Progress Badges Left/Right -->
+                    <div class="absolute top-3 left-4 text-xs font-mono font-black text-slate-500">
+                        세트: <span id="set-hand-label" class="text-emerald-600 dark:text-emerald-400 font-bold">왼손</span> <span id="set-current">1</span> / <span id="set-total">2</span>
                     </div>
                     <div class="absolute top-3 right-4 text-xs font-mono font-black text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">
                         회차: <span id="rep-current">0</span> / <span id="rep-total">10</span>
@@ -242,7 +243,7 @@
                     <div id="timer-steps-indicators" class="flex flex-wrap justify-center gap-1.5 text-[10px] font-mono pt-1">
                         <span id="badge-prepare" class="px-2 py-0.5 rounded bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400 transition-all">회차준비 (2초)</span>
                         <span id="badge-squeeze" class="px-2 py-0.5 rounded bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400 transition-all">수축하기 (2초)</span>
-                        <span id="badge-hold" class="px-2 py-0.5 rounded bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400 transition-all">꽉버티기 (3초)</span>
+                        <span id="badge-hold" class="px-2 py-0.5 rounded bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400 transition-all">꽉버티기</span>
                         <span id="badge-release" class="px-2 py-0.5 rounded bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400 transition-all">천천히펴기 (3초)</span>
                         <span id="badge-rest" class="px-2 py-0.5 rounded bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400 transition-all hidden">세트휴식</span>
                     </div>
@@ -272,7 +273,7 @@
                 <div class="bg-slate-50 dark:bg-slate-950/60 p-4 rounded-xl border border-slate-200/60 dark:border-slate-800/60">
                     <span class="text-xs text-emerald-600 dark:text-emerald-400 font-mono font-bold">40~50 lb (성인 표준)</span>
                     <h4 class="font-bold text-slate-800 dark:text-white text-sm mt-0.5">전완 부피 및 손목 강화</h4>
-                    <p class="text-[11px] text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed">체력 증진 목적의 일반 남녀 기준 표준 장력. <strong>3~4세트 수행</strong>이 가장 효율적이며 팔뚝 전반의 모세혈관과 신경 발달을 유도합니다.</p>
+                    <p class="text-[11px] text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed">체력 증진 목적 of 일반 남녀 기준 표준 장력. <strong>3~4세트 수행</strong>이 가장 효율적이며 팔뚝 전반의 모세혈관과 신경 발달을 유도합니다.</p>
                 </div>
                 <div class="bg-slate-50 dark:bg-slate-950/60 p-4 rounded-xl border border-slate-200/60 dark:border-slate-800/60">
                     <span class="text-xs text-purple-600 dark:text-purple-400 font-mono font-bold">60~70 lb (고급/선수)</span>
@@ -423,17 +424,23 @@
         let timerInterval;
         let timeLeft = 0.0;
         let isRunning = false;
+        let isPaused = false; 
         let phase = 'idle'; // 'idle', 'prepare', 'squeeze', 'hold', 'release', 'rest'
         let currentRep = 0;
-        let currentPhysicalSet = 1; // Left/Right alternating sets. 1=Left S1, 2=Right S1, 3=Left S2, 4=Right S2...
+        let currentSet = 1; // 1 to maxSets * 2 (Alternates: 1=Left S1, 2=Right S1, 3=Left S2, 4=Right S2...)
         
         let inTransitionDelay = false;
         let transitionDelayLeft = 0.0;
         let flashTimeout;
 
+        // Configuration Limits
+        let maxReps = 10;
+        let maxSets = 2; // Default to 2 sets
+        let holdDuration = 3.0; // Customizable holding duration
+        const REST_DURATION = 30.0; // Standard 30s rest between sets fixed behind the scenes
+
         const PREP_DURATION = 2.0; 
         const SQUEEZE_DURATION = 2.0;
-        const HOLD_DURATION = 3.0;
         const RELEASE_DURATION = 3.0;
         const TRANSITION_DELAY = 0.3; 
 
@@ -443,7 +450,13 @@
         const statusText = document.getElementById('timer-status');
         const repsPerSetInput = document.getElementById('reps-per-set-input');
         const totalSetsInput = document.getElementById('total-sets-input');
-        const restTimeInput = document.getElementById('rest-time-input');
+        const holdTimeInput = document.getElementById('hold-time-input');
+
+        const currentSetText = document.getElementById('set-current');
+        const totalSetText = document.getElementById('set-total');
+        const currentRepText = document.getElementById('rep-current');
+        const totalRepText = document.getElementById('rep-total');
+        const setHandLabel = document.getElementById('set-hand-label');
 
         const bPrepare = document.getElementById('badge-prepare');
         const bSqueeze = document.getElementById('badge-squeeze');
@@ -454,48 +467,19 @@
         const flashOverlay = document.getElementById('flash-overlay');
         const flashText = document.getElementById('flash-text');
 
-        // Dynamic Dual-Hand Set Tracking Dashboard
-        function updateSetDisplay() {
-            const maxSets = parseInt(totalSetsInput.value);
-            const activeHand = (currentPhysicalSet % 2 !== 0) ? 'left' : 'right';
-            const currentSetLeft = Math.floor((currentPhysicalSet - 1) / 2) + 1;
-            const currentSetRight = Math.floor(currentPhysicalSet / 2);
-
-            document.getElementById('set-left-current').innerText = Math.min(maxSets, currentSetLeft);
-            document.getElementById('set-right-current').innerText = Math.min(maxSets, currentSetRight);
-            document.getElementById('set-left-total').innerText = maxSets;
-            document.getElementById('set-right-total').innerText = maxSets;
-
-            const leftPanel = document.getElementById('set-left-panel');
-            const rightPanel = document.getElementById('set-right-panel');
-
-            // Set color and scale changes based on active hand
-            const donutBody = document.getElementById('donut-body');
-            const donutInnerLine = document.getElementById('donut-inner-line');
-
-            if (activeHand === 'left') {
-                leftPanel.className = "text-emerald-600 dark:text-emerald-400 font-extrabold border-b-2 border-emerald-500 pb-0.5 scale-105 transition-all";
-                rightPanel.className = "text-slate-400 dark:text-slate-500 font-normal border-b-2 border-transparent pb-0.5 scale-100 transition-all";
-                // Donut morphs to emerald color for Left Hand
-                donutBody.setAttribute('fill', '#10b981');
-                donutInnerLine.setAttribute('stroke', '#059669');
-            } else {
-                leftPanel.className = "text-slate-400 dark:text-slate-500 font-normal border-b-2 border-transparent pb-0.5 scale-100 transition-all";
-                rightPanel.className = "text-blue-600 dark:text-blue-400 font-extrabold border-b-2 border-blue-500 pb-0.5 scale-105 transition-all";
-                // Donut morphs to blue color for Right Hand
-                donutBody.setAttribute('fill', '#3b82f6');
-                donutInnerLine.setAttribute('stroke', '#2563eb');
-            }
+        function syncConfig() {
+            maxSets = parseInt(totalSetsInput.value);
+            totalSetText.innerText = maxSets;
+            totalRepText.innerText = repsPerSetInput.value;
+            holdDuration = parseFloat(holdTimeInput.value);
+            
+            // Render the step badge holding time description
+            bHold.innerText = `꽉버티기 (${Math.round(holdDuration)}초)`;
         }
-
-        repsPerSetInput.addEventListener('change', () => {
-            document.getElementById('rep-total').innerText = repsPerSetInput.value;
-        });
-        totalSetsInput.addEventListener('change', updateSetDisplay);
-
-        // Initial settings trigger
-        document.getElementById('rep-total').innerText = repsPerSetInput.value;
-        updateSetDisplay();
+        repsPerSetInput.addEventListener('change', syncConfig);
+        totalSetsInput.addEventListener('change', syncConfig);
+        holdTimeInput.addEventListener('change', syncConfig);
+        syncConfig();
 
         function updateBadges(activeBadge) {
             [bPrepare, bSqueeze, bHold, bRelease, bRest].forEach(b => {
@@ -509,6 +493,21 @@
                 else if (activeBadge === bRelease) { activeBadge.classList.add('bg-blue-500', 'text-white'); }
                 else if (activeBadge === bRest) { activeBadge.classList.add('bg-purple-500', 'text-white'); }
                 activeBadge.classList.remove('bg-slate-200', 'text-slate-600', 'dark:bg-slate-800', 'dark:text-slate-400');
+            }
+        }
+
+        // Handles Start/Pause/Resume dynamic button styles and inner labels
+        function updateStartButtonUI() {
+            startBtn.className = "px-6 py-3 text-slate-950 text-sm font-bold rounded-xl transition-all shadow-lg w-full max-w-[200px] active:scale-95";
+            if (!isRunning) {
+                startBtn.innerText = "타이머 시작";
+                startBtn.classList.add("bg-emerald-500", "hover:bg-emerald-600", "shadow-emerald-500/20");
+            } else if (isPaused) {
+                startBtn.innerText = "이어하기";
+                startBtn.classList.add("bg-teal-500", "hover:bg-teal-600", "shadow-teal-500/20");
+            } else {
+                startBtn.innerText = "일시중지";
+                startBtn.classList.add("bg-amber-500", "hover:bg-amber-600", "shadow-amber-500/20");
             }
         }
 
@@ -531,132 +530,8 @@
             }, 500);
         }
 
-        function runTimerLoop() {
-            initAudioEngine(); // Unblocks Web Audio API constraints on mobile
-            
-            if (isRunning) return;
-            isRunning = true;
-            
-            startBtn.disabled = true;
-            startBtn.classList.add('opacity-50', 'cursor-not-allowed');
-            repsPerSetInput.disabled = true;
-            totalSetsInput.disabled = true;
-            restTimeInput.disabled = true;
-
-            disableTransitions();
-
-            const maxReps = parseInt(repsPerSetInput.value);
-            const maxSets = parseInt(totalSetsInput.value);
-            const restDuration = parseFloat(restTimeInput.value);
-
-            function initiateNextTransition(targetPhase) {
-                inTransitionDelay = true;
-                transitionDelayLeft = TRANSITION_DELAY;
-                phase = targetPhase;
-
-                const activeHandName = (currentPhysicalSet % 2 !== 0) ? '왼손' : '오른손';
-                const activeHandColor = (currentPhysicalSet % 2 !== 0) ? 'text-emerald-600 dark:text-emerald-400' : 'text-blue-600 dark:text-blue-400';
-                const overlayBg = (currentPhysicalSet % 2 !== 0) ? 'bg-emerald-500' : 'bg-blue-500';
-                const beepFreq = (currentPhysicalSet % 2 !== 0) ? 587.33 : 698.46; // Alternating tones
-
-if (phase === 'prepare') {
-    timeLeft = PREP_DURATION;
-    
-    let repLabelText = "";
-    let overlayLabelText = "";
-    
-    if (currentRep === 0) {
-        repLabelText = `${activeHandName} 준비! 파지를 정돈하세요.`;
-        overlayLabelText = `${activeHandName} 준비!`;
-    } else if (currentRep === maxReps - 1) {
-        repLabelText = `${activeHandName} 마지막 회차! 온 힘을 다하세요.`;
-        overlayLabelText = `${activeHandName} 마지막!`;
-    } else {
-        repLabelText = `${activeHandName} ${currentRep + 1}회차 시작 준비: 파지를 정돈하세요.`;
-        overlayLabelText = `${activeHandName} ${currentRep + 1}회차`;
-    }
-
-    statusText.innerText = repLabelText;
-    statusText.className = `text-xs font-bold ${activeHandColor} tracking-wide uppercase`;
-    updateBadges(bPrepare);
-    updateActiveCard(step1);
-    setSqueezePercent(0);
-    triggerPhaseTransition(overlayLabelText, 349.23, true, 'bg-amber-500');
-}
-                else if (phase === 'squeeze') {
-                    timeLeft = SQUEEZE_DURATION;
-                    statusText.innerText = `지그시 완전히 수축시키세요! (SQUEEZE)`;
-                    statusText.className = "text-xs font-bold text-teal-600 dark:text-teal-400 tracking-wide uppercase";
-                    updateBadges(bSqueeze);
-                    updateActiveCard(step2);
-                    setSqueezePercent(0);
-                    triggerPhaseTransition("SQUEEZE!!", beepFreq, true, 'bg-teal-500');
-                } 
-                else if (phase === 'hold') {
-                    timeLeft = HOLD_DURATION;
-                    statusText.innerText = `벽면 완전 밀착 상태 유지! (HOLD)`;
-                    statusText.className = "text-xs font-bold text-emerald-600 dark:text-emerald-400 tracking-wide uppercase animate-pulse";
-                    updateBadges(bHold);
-                    setSqueezePercent(100);
-                    triggerPhaseTransition("HOLD!!", 880, true, overlayBg);
-                } 
-                else if (phase === 'release') {
-                    timeLeft = RELEASE_DURATION;
-                    statusText.innerText = `탄성에 맞서며 3초간 서서히 펴세요. (RELEASE)`;
-                    statusText.className = "text-xs font-bold text-blue-600 dark:text-blue-400 tracking-wide uppercase";
-                    updateBadges(bRelease);
-                    updateActiveCard(step3);
-                    setSqueezePercent(100);
-                    triggerPhaseTransition("RELEASE!!", 659.25, true, 'bg-blue-500');
-                } 
-                else if (phase === 'rest') {
-                    timeLeft = restDuration;
-                    
-                    const nextPhysicalSet = currentPhysicalSet + 1;
-                    const nextHandName = (nextPhysicalSet % 2 !== 0) ? '왼손' : '오른손';
-                    const nextHandTargetSet = (nextPhysicalSet % 2 !== 0) ? Math.floor((nextPhysicalSet - 1) / 2) + 1 : Math.floor(nextPhysicalSet / 2);
-
-                    statusText.innerText = `세트 휴식 중! [${nextHandName} 세트 ${nextHandTargetSet}] 대기 전환하세요.`;
-                    statusText.className = "text-xs font-bold text-purple-600 dark:text-purple-400 tracking-wide uppercase";
-                    updateBadges(bRest);
-                    updateActiveCard(null);
-                    setSqueezePercent(0);
-                    triggerPhaseTransition(`${nextHandName} 교대!`, 440, true, 'bg-purple-500');
-
-                    // Pre-increment physical set during rest phase so dashboard displays active hand correctly
-                    currentPhysicalSet++;
-                    updateSetDisplay();
-                }
-            }
-
-            function finalizeWorkout() {
-                clearInterval(timerInterval);
-                phase = 'idle';
-                statusText.innerText = "모든 목표 세트 훈련 완료! 수고하셨습니다.";
-                statusText.className = "text-xs font-bold text-emerald-600 dark:text-emerald-400 font-black tracking-wider";
-                updateBadges(null);
-                updateActiveCard(step1);
-                setSqueezePercent(0);
-                enableTransitions();
-
-                startBtn.disabled = false;
-                startBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-                repsPerSetInput.disabled = false;
-                totalSetsInput.disabled = false;
-                restTimeInput.disabled = false;
-                isRunning = false;
-                currentRep = 0;
-                currentPhysicalSet = 1;
-                document.getElementById('rep-current').innerText = "0";
-                display.innerHTML = `0.00<span class="text-lg text-slate-400 dark:text-slate-500">s</span>`;
-                updateSetDisplay();
-                
-                playBeepSound(880, 0.1);
-                setTimeout(() => playBeepSound(1318.51, 0.4), 120);
-            }
-
-            initiateNextTransition('prepare');
-
+        // Starts or resumes the setInterval logic loop
+        function startInterval() {
             timerInterval = setInterval(() => {
                 if (inTransitionDelay) {
                     transitionDelayLeft -= 0.01;
@@ -678,11 +553,11 @@ if (phase === 'prepare') {
                         initiateNextTransition('release');
                     } else if (phase === 'release') {
                         currentRep++;
-                        document.getElementById('rep-current').innerText = currentRep;
+                        currentRepText.innerText = currentRep;
 
                         if (currentRep >= maxReps) {
-                            const maxPhysicalSets = maxSets * 2;
-                            if (currentPhysicalSet >= maxPhysicalSets) {
+                            // Check if each hand has reached maxSets (total physical sets = maxSets * 2)
+                            if (currentSet >= maxSets * 2) {
                                 finalizeWorkout();
                             } else {
                                 initiateNextTransition('rest');
@@ -691,8 +566,19 @@ if (phase === 'prepare') {
                             initiateNextTransition('prepare');
                         }
                     } else if (phase === 'rest') {
+                        currentSet++;
                         currentRep = 0;
-                        document.getElementById('rep-current').innerText = currentRep;
+                        currentRepText.innerText = currentRep;
+                        
+                        // Update UI Set states
+                        const displaySet = Math.ceil(currentSet / 2);
+                        const activeHandName = (currentSet % 2 !== 0) ? '왼손' : '오른손';
+                        const handColorClass = (currentSet % 2 !== 0) ? 'text-emerald-600 dark:text-emerald-400' : 'text-blue-600 dark:text-blue-400';
+                        
+                        currentSetText.innerText = displaySet;
+                        setHandLabel.innerText = activeHandName;
+                        setHandLabel.className = `${handColorClass} font-bold`;
+
                         initiateNextTransition('prepare');
                     }
                 }
@@ -716,6 +602,178 @@ if (phase === 'prepare') {
             }, 10);
         }
 
+        // Moves safely to the next action block
+        function initiateNextTransition(targetPhase) {
+            inTransitionDelay = true;
+            transitionDelayLeft = TRANSITION_DELAY;
+            phase = targetPhase;
+
+            const activeHandName = (currentSet % 2 !== 0) ? '왼손' : '오른손';
+            const activeHandColor = (currentSet % 2 !== 0) ? 'text-emerald-600 dark:text-emerald-400' : 'text-blue-600 dark:text-blue-400';
+            const displaySet = Math.ceil(currentSet / 2);
+
+            // Dynamically update donut color based on active hand
+            const donutBody = document.getElementById('donut-body');
+            const donutInnerLine = document.getElementById('donut-inner-line');
+            if (donutBody && donutInnerLine) {
+                if (currentSet % 2 !== 0) {
+                    donutBody.setAttribute('fill', '#10b981'); // Emerald
+                    donutInnerLine.setAttribute('stroke', '#059669');
+                } else {
+                    donutBody.setAttribute('fill', '#3b82f6'); // Blue
+                    donutInnerLine.setAttribute('stroke', '#2563eb');
+                }
+            }
+
+            if (phase === 'prepare') {
+                timeLeft = PREP_DURATION;
+                
+                let repLabelText = "";
+                let overlayLabelText = "";
+                
+                if (currentRep === 0) {
+                    repLabelText = `${activeHandName} 준비! 파지를 정돈하세요.`;
+                    overlayLabelText = `${activeHandName} 준비!`;
+                } else if (currentRep === maxReps - 1) {
+                    repLabelText = `${activeHandName} 마지막 회차! 온 힘을 다하세요.`;
+                    overlayLabelText = `${activeHandName} 마지막!`;
+                } else {
+                    repLabelText = `${activeHandName} ${currentRep + 1}회차 시작 준비: 파지를 정돈하세요.`;
+                    overlayLabelText = `${activeHandName} ${currentRep + 1}회차`;
+                }
+
+                statusText.innerText = repLabelText;
+                statusText.className = `text-xs font-bold ${activeHandColor} tracking-wide uppercase`;
+                updateBadges(bPrepare);
+                updateActiveCard(step1);
+                setSqueezePercent(0);
+                triggerPhaseTransition(overlayLabelText, 349.23, true, 'bg-amber-500');
+            }
+            else if (phase === 'squeeze') {
+                timeLeft = SQUEEZE_DURATION;
+                statusText.innerText = `지그시 완전히 수축시키세요! (SQUEEZE)`;
+                statusText.className = "text-xs font-bold text-teal-600 dark:text-teal-400 tracking-wide uppercase";
+                updateBadges(bSqueeze);
+                updateActiveCard(step2);
+                setSqueezePercent(0);
+                triggerPhaseTransition("SQUEEZE!!", 587.33, true, 'bg-teal-500');
+            } 
+            else if (phase === 'hold') {
+                timeLeft = holdDuration; // User configured duration applied here
+                statusText.innerText = `벽면 완전 밀착 상태 유지! (${Math.round(holdDuration)}초 버티기)`;
+                statusText.className = "text-xs font-bold text-emerald-600 dark:text-emerald-400 tracking-wide uppercase animate-pulse";
+                updateBadges(bHold);
+                setSqueezePercent(100);
+                triggerPhaseTransition("HOLD!!", 880, true, 'bg-emerald-500');
+            } 
+            else if (phase === 'release') {
+                timeLeft = RELEASE_DURATION;
+                statusText.innerText = `탄성에 맞서며 3초간 서서히 펴세요. (RELEASE)`;
+                statusText.className = "text-xs font-bold text-blue-600 dark:text-blue-400 tracking-wide uppercase";
+                updateBadges(bRelease);
+                updateActiveCard(step3);
+                setSqueezePercent(100);
+                triggerPhaseTransition("RELEASE!!", 659.25, true, 'bg-blue-500');
+            } 
+            else if (phase === 'rest') {
+                timeLeft = REST_DURATION; // 30s background rest
+                
+                const nextPhysicalSet = currentSet + 1;
+                const nextHandName = (nextPhysicalSet % 2 !== 0) ? '왼손' : '오른손';
+                const nextDisplaySet = Math.ceil(nextPhysicalSet / 2);
+
+                statusText.innerText = `세트 종료! 30초 휴식 후 [${nextHandName} ${nextDisplaySet}세트] 시작 예정`;
+                statusText.className = "text-xs font-bold text-purple-600 dark:text-purple-400 tracking-wide uppercase";
+                updateBadges(bRest);
+                updateActiveCard(null);
+                setSqueezePercent(0);
+                triggerPhaseTransition(`${nextHandName} 준비!`, 440, true, 'bg-purple-500');
+            }
+        }
+
+        function startWorkout() {
+            initAudioEngine();
+            isRunning = true;
+            isPaused = false;
+            
+            repsPerSetInput.disabled = true;
+            totalSetsInput.disabled = true;
+            holdTimeInput.disabled = true;
+
+            disableTransitions();
+
+            maxReps = parseInt(repsPerSetInput.value);
+            maxSets = parseInt(totalSetsInput.value);
+            holdDuration = parseFloat(holdTimeInput.value);
+
+            // Update displays initially
+            currentSetText.innerText = Math.ceil(currentSet / 2);
+            setHandLabel.innerText = (currentSet % 2 !== 0) ? '왼손' : '오른손';
+            setHandLabel.className = (currentSet % 2 !== 0) ? 'text-emerald-600 dark:text-emerald-400 font-bold' : 'text-blue-600 dark:text-blue-400 font-bold';
+
+            updateStartButtonUI();
+            initiateNextTransition('prepare');
+            startInterval();
+        }
+
+        function pauseWorkout() {
+            isPaused = true;
+            clearInterval(timerInterval);
+            clearTimeout(flashTimeout);
+            flashOverlay.classList.add('hidden'); // Clear overlay flash so user can see paused state
+            statusText.innerText = "[일시정지됨] " + statusText.innerText.replace("[일시정지됨] ", "");
+            updateStartButtonUI();
+        }
+
+        function resumeWorkout() {
+            initAudioEngine();
+            isPaused = false;
+            statusText.innerText = statusText.innerText.replace("[일시정지됨] ", "");
+            updateStartButtonUI();
+            startInterval();
+        }
+
+        function finalizeWorkout() {
+            clearInterval(timerInterval);
+            phase = 'idle';
+            statusText.innerText = "모든 목표 세트 훈련 완료! 수고하셨습니다.";
+            statusText.className = "text-xs font-bold text-emerald-600 dark:text-emerald-400 font-black tracking-wider";
+            updateBadges(null);
+            updateActiveCard(step1);
+            setSqueezePercent(0);
+            enableTransitions();
+
+            startBtn.disabled = false;
+            startBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            repsPerSetInput.disabled = false;
+            totalSetsInput.disabled = false;
+            holdTimeInput.disabled = false;
+            isRunning = false;
+            isPaused = false;
+            currentRep = 0;
+            currentSet = 1;
+            currentRepText.innerText = "0";
+            
+            // Sync UI back to starting defaults
+            syncConfig();
+            display.innerHTML = `0.00<span class="text-lg text-slate-400 dark:text-slate-500">s</span>`;
+            updateStartButtonUI();
+            
+            playBeepSound(880, 0.1);
+            setTimeout(() => playBeepSound(1318.51, 0.4), 120);
+        }
+
+        // Action Hub controller for starting/pausing/resuming state
+        startBtn.addEventListener('click', () => {
+            if (!isRunning) {
+                startWorkout();
+            } else if (!isPaused) {
+                pauseWorkout();
+            } else {
+                resumeWorkout();
+            }
+        });
+
         function resetTimer() {
             clearInterval(timerInterval);
             clearTimeout(flashTimeout);
@@ -724,26 +782,26 @@ if (phase === 'prepare') {
             flashOverlay.classList.add('hidden');
             setSqueezePercent(0);
             currentRep = 0;
-            currentPhysicalSet = 1;
-            document.getElementById('rep-current').innerText = "0";
+            currentSet = 1;
+            currentRepText.innerText = "0";
 
             display.innerHTML = `0.00<span class="text-lg text-slate-400 dark:text-slate-500">s</span>`;
             statusText.innerText = "대기 중";
             statusText.className = "text-xs font-bold text-slate-500 dark:text-slate-400 tracking-wide uppercase";
             updateBadges(null);
             
-            startBtn.disabled = false;
-            startBtn.classList.remove('opacity-50', 'cursor-not-allowed');
             repsPerSetInput.disabled = false;
             totalSetsInput.disabled = false;
-            restTimeInput.disabled = false;
+            holdTimeInput.disabled = false;
+            
             isRunning = false;
+            isPaused = false;
+            updateStartButtonUI();
 
-            updateSetDisplay();
+            syncConfig();
             updateActiveCard(step1);
         }
 
-        startBtn.addEventListener('click', runTimerLoop);
         resetBtn.addEventListener('click', resetTimer);
 
         // Bootstrap visual indicators
